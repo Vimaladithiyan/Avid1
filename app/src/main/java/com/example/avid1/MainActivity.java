@@ -3,6 +3,7 @@ package com.example.avid1;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -15,12 +16,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ListView listView;
 
-    ArrayList<String> myArrayList = new ArrayList<>();
-    DatabaseReference mRef;
+  private RecyclerView mRecyclerView;
 
 
 
@@ -28,41 +28,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayAdapter adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,myArrayList);
-        listView.setAdapter(adapter);
-        listView=(ListView)findViewById(R.id.ListView1);
-        mRef = FirebaseDatabase.getInstance().getReference();
-        mRef.addChildEventListener(new ChildEventListener() {
+        mRecyclerView =(RecyclerView) findViewById(R.id.RecyclerView_Avid);
+        new FirebaseDatabaseHelper().read(new FirebaseDatabaseHelper.DataStatus() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value=snapshot.getValue(Students.class).toString();
-                myArrayList.add(value);
-                adapter.notifyDataSetChanged();
-                listView.invalidateViews();
-                listView.refreshDrawableState();
-                adapter.notifyDataSetChanged();
+            public void DataIsLoaded(List<Students> list, List<String> keys) {
+                new RecyclerView_config().setConfig(mRecyclerView,MainActivity.this,list,keys);
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            public void DataIsInserted() {
 
             }
 
             @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void DataIsUpdated() {
 
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void DataIsDeleted() {
 
             }
         });
+
+
+
 
     }
 
