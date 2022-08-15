@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "371626895402",
+    "firebase_url": "https://avid-816eb-default-rtdb.firebaseio.com",
+    "project_id": "avid-816eb",
+    "storage_bucket": "avid-816eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371626895402:android:8659aa05cc0b4024c9bb53",
+        "android_client_info": {
+          "package_name": "com.example.avid1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371626895402-m07u1o95akmooff3o73hk3rpe2k6qc3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNJG4_wVvN90eSnFNwK1wS0Jk6AoXmgUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371626895402-m07u1o95akmooff3o73hk3rpe2k6qc3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
