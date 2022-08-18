@@ -2,23 +2,25 @@
     package com.example.avid1;
 
     public class Students {
-        private String name;
-        private String rank;
+        private String Name;
+        private Integer rank;
 
         public Students() {
         }
 
-        public Students(String name, String rank) {
-            this.name = name;
+        public Students(String Name, Integer rank) {
+            this.Name = Name;
             this.rank = rank;
         }
 
         public String getName() {
-            return name;
+            return Name;
         }
 
         public String getRank() {
-            return rank;
+
+            String rank1=String.valueOf(rank);
+            return rank1;
         }
     }
 
