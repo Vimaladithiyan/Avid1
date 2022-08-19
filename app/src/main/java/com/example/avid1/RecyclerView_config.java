@@ -10,16 +10,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RecyclerView_config {
     private Context mContext;
     private listAdapter mListAdapter;
     public void setConfig(RecyclerView recyclerView,Context context,List<Students>list,List<String>keys){
+        Collections.sort(list, new Comparator<Students>() {
+            @Override
+            public int compare(Students students, Students t1) {
+                return students.getName().compareTo(t1.getName());
+            }
+
+        });
      mContext=context;
      mListAdapter = new listAdapter(list,keys);
      recyclerView.setLayoutManager(new LinearLayoutManager(context));
      recyclerView.setAdapter(mListAdapter);
+     mListAdapter.notifyDataSetChanged();
     }
 
 
@@ -50,6 +60,7 @@ public class RecyclerView_config {
     class listAdapter extends RecyclerView.Adapter<StudentItemView>{
     private List<Students>StudentList;
     private List<String>mKeys;
+
 
 
         public listAdapter(List<Students> studentList, List<String> mKeys) {
