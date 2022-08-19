@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -44,13 +46,16 @@ public class RecyclerView_config {
             super(LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false));
             name_text=(TextView) itemView.findViewById(R.id.textView3);
             Rank_text=(TextView) itemView.findViewById(R.id.textView4);
-            //image = (ImageView) itemView.findViewById(R.id.imageview1);
+            image = (ImageView) itemView.findViewById(R.id.imageview1);
 
 
         }
        public void bind(Students list,String key){
             name_text.setText(list.getName());
             Rank_text.setText(""+list.getRank());
+            Picasso.get().load(list.getImage_url()).into(image);
+
+
             //Glide.with
             this.key=key;
 
@@ -78,6 +83,9 @@ public class RecyclerView_config {
         @Override
         public void onBindViewHolder(@NonNull StudentItemView holder, int position) {
             holder.bind(StudentList.get(position),mKeys.get(position));
+
+
+
         }
 
         @Override
