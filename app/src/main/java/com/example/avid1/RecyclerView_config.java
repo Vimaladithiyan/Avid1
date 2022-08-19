@@ -3,6 +3,7 @@ package com.example.avid1;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,17 +27,21 @@ public class RecyclerView_config {
     class StudentItemView extends RecyclerView.ViewHolder{
         private TextView name_text;
         private TextView Rank_text;
+        private ImageView image;
         private String key;
 
         public StudentItemView(ViewGroup parent){
             super(LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false));
             name_text=(TextView) itemView.findViewById(R.id.textView3);
             Rank_text=(TextView) itemView.findViewById(R.id.textView4);
+            //image = (ImageView) itemView.findViewById(R.id.imageview1);
+
 
         }
        public void bind(Students list,String key){
             name_text.setText(list.getName());
-            Rank_text.setText(list.getRank());
+            Rank_text.setText(""+list.getRank());
+            //Glide.with
             this.key=key;
 
        }
@@ -46,8 +51,10 @@ public class RecyclerView_config {
     private List<Students>StudentList;
     private List<String>mKeys;
 
+
         public listAdapter(List<Students> studentList, List<String> mKeys) {
             this.StudentList = studentList;
+
             this.mKeys = mKeys;
         }
 
