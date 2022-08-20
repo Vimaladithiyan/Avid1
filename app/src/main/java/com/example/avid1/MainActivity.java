@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,14 +23,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
   private RecyclerView mRecyclerView;
+  //public SearchView searchView;
+  public String query;
+
 
 
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView =(RecyclerView) findViewById(R.id.RecyclerView_Avid);
+        //searchView = (SearchView) findViewById(R.id.searchView);
         new FirebaseDatabaseHelper().read(new FirebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Students> list, List<String> keys) {
@@ -50,10 +57,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+       // searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           // @Override
+            //public boolean onQueryTextSubmit(String s) {
+              //  query=s;
+                //return false;
+            //}
+
+            //@Override
+            //public boolean onQueryTextChange(String s) {
+              //  return false;
+            //}
+        //});
+
+    }
 
 
 
 
     }
 
-}

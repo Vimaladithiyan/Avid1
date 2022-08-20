@@ -26,6 +26,9 @@
             return rank;
         }
 
+        public String getCity(){
+            return City;
+        }
 
 
         public String getImage_url() {

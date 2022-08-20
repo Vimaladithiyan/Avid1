@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.example.avid1.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class FirebaseDatabaseHelper {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
+    public MainActivity M;
     StorageReference storageReference;
     private List<Students>list=new ArrayList<>();
     public interface DataStatus{
@@ -36,7 +38,7 @@ public class FirebaseDatabaseHelper {
 
     }
     public void read( final DataStatus dataStatus){
-        mRef.addValueEventListener(new ValueEventListener() {
+        mRef.orderByChild("City").equalTo("Chennai").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();

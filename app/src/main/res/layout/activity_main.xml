@@ -4,12 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="10dp"
+        android:background="#55F5F5F5"
+        android:elevation="1dp"
+        android:queryHint="Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView_Avid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="699dp"
+        android:layout_below="@+id/searchView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="57dp"
+        android:layout_marginBottom="48dp" />
 
 </RelativeLayout>
 
