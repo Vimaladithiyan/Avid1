@@ -38,7 +38,7 @@ public class FirebaseDatabaseHelper {
 
     }
     public void read( final DataStatus dataStatus){
-        mRef.orderByChild("City").equalTo("Chennai").addValueEventListener(new ValueEventListener() {
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();

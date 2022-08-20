@@ -20,13 +20,13 @@ public class RecyclerView_config {
     private Context mContext;
     private listAdapter mListAdapter;
     public void setConfig(RecyclerView recyclerView,Context context,List<Students>list,List<String>keys){
-        Collections.sort(list, new Comparator<Students>() {
-            @Override
-            public int compare(Students students, Students t1) {
-                return students.getName().compareTo(t1.getName());
-            }
+        //Collections.sort(list, new Comparator<Students>() {
+          //  @Override
+            //public int compare(Students students, Students t1) {
+              //  return students.getName().compareTo(t1.getName());
+            //}
 
-        });
+        //});
      mContext=context;
      mListAdapter = new listAdapter(list,keys);
      recyclerView.setLayoutManager(new LinearLayoutManager(context));
