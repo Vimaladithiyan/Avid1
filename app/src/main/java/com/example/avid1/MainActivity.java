@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        searchView=(SearchView)findViewById(R.id.searchView);
 /*
         new FirebaseDatabaseHelper().read(new FirebaseDatabaseHelper.DataStatus() {
             @Override
@@ -163,10 +164,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                Query query = FirebaseDatabase.getInstance().getReference().orderByChild("City").equalTo(s);
+                String str=""+s;
+                Query query = FirebaseDatabase.getInstance().getReference().orderByChild("City").equalTo(str);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -184,11 +186,34 @@ public class MainActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-               });
-           return false; }
+                });
+                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+
+                return false;
+            }
 
             @Override
             public boolean onQueryTextChange(String s) {
+                String str=""+s;
+                Query query = FirebaseDatabase.getInstance().getReference().orderByChild("City").equalTo(str);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        studentsList.clear();
+                        for (DataSnapshot keynode : snapshot.getChildren()){
+                            keys.add(keynode.getKey());
+                            Students lists = keynode.getValue(Students.class);
+                            studentsList.add(lists);
+                        }
+                        mAdapter=new RecyclerViewAdapter(studentsList,keys,MainActivity.this);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 return false;
             }
         });
