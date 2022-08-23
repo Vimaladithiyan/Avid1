@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
                 String str=""+s;
-                Query query = FirebaseDatabase.getInstance().getReference().orderByChild("City").equalTo(str);
+                Query query = FirebaseDatabase.getInstance().getReference().orderByChild("Name").startAt(str.toUpperCase()).endAt(str.toLowerCase()+"\uf8ff");
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
