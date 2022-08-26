@@ -17,4 +17,6 @@
     <string name="login_form_username">Username</string>
     <string name="login_form_password">Password</string>
     <string name="login_form_login">LOGIN</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
 </resources>

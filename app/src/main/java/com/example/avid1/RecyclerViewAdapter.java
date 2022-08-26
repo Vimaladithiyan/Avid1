@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView name_text;
         private TextView Rank_text;
         private ImageView image;
+        private Button button;
         private String key;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -58,7 +60,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             name_text=(TextView) itemView.findViewById(R.id.textView3);
             Rank_text=(TextView) itemView.findViewById(R.id.textView4);
             image = (ImageView) itemView.findViewById(R.id.imageview1);
+            button=(Button)  itemView.findViewById(R.id.button);
 
         }
     }
+
 }
