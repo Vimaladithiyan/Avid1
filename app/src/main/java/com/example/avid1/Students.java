@@ -8,6 +8,9 @@
         private Integer rank;
         private String Image_url;
         private String City;
+        private String Type;
+       // public String Type;
+
         public Students() {
         }
 
@@ -16,6 +19,7 @@
             this.rank = rank;
             this.Image_url = Image_url;
             this.City=City;
+            this.Type=Type;
         }
         public static Comparator<Students>StudentNameaz=new Comparator<Students>() {
             @Override
@@ -41,6 +45,10 @@
 
         public String getImage_url() {
             return Image_url;
+        }
+
+       public String getType() {
+            return Type;
         }
     }
 

@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private SearchView searchView;
+    private ImageButton button1;
 
 
 
@@ -217,8 +218,23 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    button1=findViewById(R.id.imageButton6);
+    button1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(getApplicationContext(),compare.class);
+            startActivity(intent);
+        }
+    });
+        mRecyclerView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
 
+                return false;
+            }
+        });
     }
+
 
 
 
